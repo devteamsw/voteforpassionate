@@ -9,8 +9,33 @@
   <link rel="stylesheet" href="css/profile.css">
   <script src="js/index.js"></script>
   <title>Passion Pro Reality Show</title>
+  <style>
+      .popup {
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          background-color: #333;
+          color: white;
+          padding: 10px;
+          border-radius: 5px;
+          display: flex;
+          align-items: center;
+          display: none;
+          z-index: 1000;
+      }
+      .popup img {
+          border-radius: 50%;
+          margin-right: 10px;
+          width: 40px;
+          height: 40px;
+      }
+    </style>
 </head>
 <body>
+  <div id="popup" class="popup">
+      <img id="profile-pic" src="" alt="Profile Picture">
+      <span id="popup-text"></span>
+  </div>
   <div id="home">
     <header>
       <img src="img/slide.svg">
@@ -214,6 +239,86 @@
 
 
 
+    </script>
+
+  <script>
+        const voters = [
+            { name: "Arjun", country: "India", photo: "images/1.jpeg" },
+            { name: "Priya", country: "India", photo: "images/2.jpeg" },
+            { name: "Ravi", country: "India", photo: "images/3.jpeg" },
+            { name: "Sana", country: "India", photo: "images/4.jpeg" },
+            { name: "Amit", country: "India", photo: "images/5.jpeg" },
+            { name: "Vikram", country: "India", photo: "images/6.jpeg" },
+            { name: "Ananya", country: "India", photo: "images/7.jpeg" },
+            { name: "Kavya", country: "India", photo: "images/8.jpeg" },
+            { name: "Nikhil", country: "India", photo: "images/9.jpeg" },
+            { name: "Meera", country: "India", photo: "images/10.jpeg" },
+            { name: "Rajesh", country: "India", photo: "images/11.jpeg" },
+            { name: "Tara", country: "India", photo: "images/12.jpeg" },
+            { name: "Rahul", country: "India", photo: "images/13.jpeg" },
+            { name: "Sneha", country: "India", photo: "images/14.jpeg" },
+            { name: "Krishna", country: "India", photo: "images/15.jpeg" },
+            { name: "Aditya", country: "India", photo: "images/16.jpeg" },
+            { name: "Rani", country: "India", photo: "images/17.jpeg" },
+            { name: "Pooja", country: "India", photo: "images/18.jpeg" },
+            { name: "Sunil", country: "India", photo: "images/19.jpeg" },
+            { name: "Isha", country: "India", photo: "images/20.jpeg" },
+            { name: "Rohan", country: "India", photo: "images/21.jpeg" },
+            { name: "Anil", country: "India", photo: "images/22.jpeg" },
+            { name: "Maya", country: "India", photo: "images/23.jpeg" },
+            { name: "Suresh", country: "India", photo: "images/24.jpeg" },
+            { name: "Neha", country: "India", photo: "images/25.jpeg" },
+            { name: "Zhang Wei", country: "China", photo: "images2/1.jpeg" },
+            { name: "Yumi", country: "Japan", photo: "images2/2.jpeg" },
+            { name: "Kim Min-seok", country: "South Korea", photo: "images2/3.jpeg" },
+            { name: "Nguyen Thi Mai", country: "Vietnam", photo: "images2/4.jpeg" },
+            { name: "Li Na", country: "China", photo: "images2/5.jpeg" },
+            { name: "Haruto", country: "Japan", photo: "images2/6.jpeg" },
+            { name: "Siti", country: "Malaysia", photo: "images2/7.jpeg" },
+            { name: "Abdul", country: "Pakistan", photo: "images2/8.jpeg" },
+            { name: "Bong Cha", country: "South Korea", photo: "images2/9.jpeg" },
+            { name: "Thao", country: "Vietnam", photo: "images2/10.jpeg" },
+            { name: "Rashid", country: "Bangladesh", photo: "images2/11.jpeg" },
+            { name: "Prajwal", country: "India", photo: "images2/12.jpeg" },
+            { name: "Irfan", country: "India", photo: "images2/13.jpeg" },
+            { name: "Sundar", country: "India", photo: "images2/14.jpeg" },
+            { name: "Lakshmi", country: "India", photo: "images2/15.jpeg" },
+            { name: "Karan", country: "India", photo: "images2/16.jpeg" },
+            { name: "Ishita", country: "India", photo: "images2/17.jpeg" },
+            { name: "Gopal", country: "India", photo: "images2/18.jpeg" },
+            { name: "Poonam", country: "India", photo: "images2/19.jpeg" },
+            { name: "Manju", country: "India", photo: "images2/20.jpeg" },
+            { name: "Akira", country: "Japan", photo: "images2/21.jpeg" },
+            { name: "Tanvir", country: "Bangladesh", photo: "images2/22.jpeg" },
+            { name: "Fahim", country: "Pakistan", photo: "images2/23.jpeg" },
+            { name: "Laxman", country: "India", photo: "images2/24.jpeg" },
+            { name: "Vaani", country: "India", photo: "images2/25.jpeg" },
+        ];
+
+        function showPopup() {
+            const voter = voters[Math.floor(Math.random() * voters.length)];
+            const time = Math.floor(Math.random() * 5) + 1; // Random time between 1 and 5 minutes
+            
+            const popupText = document.getElementById('popup-text');
+            const profilePic = document.getElementById('profile-pic');
+            
+            popupText.textContent = `${voter.name} from ${voter.country} just voted ${time} minutes ago`;
+            profilePic.src = voter.photo;
+            
+            const popup = document.getElementById('popup');
+            popup.style.display = 'flex';
+            
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 5000); // Hide the popup after 5 seconds
+        }
+
+        function startPopups() {
+            showPopup();
+            setInterval(showPopup, 15000); // Show a popup every 15 seconds
+        }
+
+        window.onload = startPopups;
     </script>
   </body>
   </html>
